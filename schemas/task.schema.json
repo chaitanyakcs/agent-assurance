@@ -1,0 +1,49 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://assurance.agent/schemas/v0/task.schema.json",
+  "title": "Agent Assurance Task",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["apiVersion", "kind", "metadata", "classification", "source"],
+  "properties": {
+    "apiVersion": {"const": "assurance.agent/v0"},
+    "kind": {"const": "Task"},
+    "metadata": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id"],
+      "properties": {
+        "id": {"type": "string", "minLength": 1},
+        "title": {"type": "string"}
+      }
+    },
+    "classification": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["stage", "family", "risk"],
+      "properties": {
+        "stage": {"enum": ["intent", "spec", "plan", "implementation", "review", "verification", "operation", "incident"]},
+        "family": {"type": "string", "minLength": 1},
+        "complexity": {"enum": ["low", "medium", "high"]},
+        "risk_domain": {"type": "string"},
+        "risk": {"enum": ["low", "medium", "high", "critical"]},
+        "blast_radius": {"enum": ["local", "component", "service", "multi_service", "organization", "external"]}
+      }
+    },
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["repository", "revision"],
+      "properties": {
+        "repository": {"type": "string", "minLength": 1},
+        "revision": {"type": "string", "minLength": 1},
+        "issue": {"type": "string"},
+        "historical_outcome": {"type": "string"}
+      }
+    },
+    "requirements": {
+      "type": "array",
+      "items": {"type": "string"}
+    }
+  }
+}

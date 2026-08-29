@@ -1,0 +1,26 @@
+apiVersion: assurance.agent/v0
+kind: Evidence
+metadata:
+  id: evidence-001
+  created_at: "2026-08-30T01:30:00+05:30"
+task:
+  id: task-001
+executor:
+  type: agent
+  provider: example-provider
+  agent: example-coding-agent
+  model: example-model
+  configuration: example-agent-v1
+  configuration_digest: sha256:example
+outcome:
+  status: success
+  duration_seconds: 412
+verification:
+  - type: test
+    name: repository test suite
+    result: pass
+    independent: true
+  - type: security
+    name: static security scan
+    result: pass
+    independent: true

@@ -1,0 +1,60 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://assurance.agent/schemas/v0/decision.schema.json",
+  "title": "Agent Assurance Decision",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["apiVersion", "kind", "task", "subject", "capability", "permissions", "reason"],
+  "properties": {
+    "apiVersion": {"const": "assurance.agent/v0"},
+    "kind": {"const": "Decision"},
+    "task": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "risk"],
+      "properties": {
+        "id": {"type": "string", "minLength": 1},
+        "risk": {"enum": ["low", "medium", "high", "critical"]}
+      }
+    },
+    "subject": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["configuration"],
+      "properties": {
+        "configuration": {"type": "string", "minLength": 1},
+        "configuration_digest": {"type": "string"}
+      }
+    },
+    "capability": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["required", "demonstrated", "confidence"],
+      "properties": {
+        "required": {"enum": ["L0", "L1", "L2", "L3", "L4", "L5"]},
+        "demonstrated": {"enum": ["L0", "L1", "L2", "L3", "L4", "L5"]},
+        "confidence": {"enum": ["low", "medium", "high"]}
+      }
+    },
+    "permissions": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["assist", "implement", "open_pr", "merge"],
+      "properties": {
+        "assist": {"enum": ["allow", "deny", "require_human"]},
+        "implement": {"enum": ["allow", "deny", "require_human"]},
+        "open_pr": {"enum": ["allow", "deny", "require_human"]},
+        "merge": {"enum": ["allow", "deny", "require_human"]}
+      }
+    },
+    "required_runtime_evidence": {
+      "type": "array",
+      "items": {"type": "string"}
+    },
+    "reason": {
+      "type": "array",
+      "minItems": 1,
+      "items": {"type": "string"}
+    }
+  }
+}

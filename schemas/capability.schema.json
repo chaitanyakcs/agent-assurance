@@ -1,0 +1,61 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://assurance.agent/schemas/v0/capability.schema.json",
+  "title": "Agent Assurance Capability",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["apiVersion", "kind", "subject", "scope", "evaluation", "qualification"],
+  "properties": {
+    "apiVersion": {"const": "assurance.agent/v0"},
+    "kind": {"const": "Capability"},
+    "subject": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["configuration"],
+      "properties": {
+        "provider": {"type": "string"},
+        "agent": {"type": "string"},
+        "model": {"type": "string"},
+        "configuration": {"type": "string", "minLength": 1},
+        "configuration_digest": {"type": "string"}
+      }
+    },
+    "scope": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["stage", "task_family"],
+      "properties": {
+        "repository": {"type": "string"},
+        "stage": {"enum": ["intent", "spec", "plan", "implementation", "review", "verification", "operation", "incident"]},
+        "task_family": {"type": "string", "minLength": 1},
+        "risk_domain": {"type": "string"},
+        "max_risk": {"enum": ["low", "medium", "high", "critical"]}
+      }
+    },
+    "evaluation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["attempted", "successful"],
+      "properties": {
+        "attempted": {"type": "integer", "minimum": 1},
+        "successful": {"type": "integer", "minimum": 0},
+        "independent_trials": {"type": "integer", "minimum": 1},
+        "benchmark": {"type": "string"},
+        "score": {"type": "number", "minimum": 0, "maximum": 1}
+      }
+    },
+    "qualification": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["level", "confidence", "status"],
+      "properties": {
+        "level": {"enum": ["L0", "L1", "L2", "L3", "L4", "L5"]},
+        "confidence": {"enum": ["low", "medium", "high"]},
+        "status": {"enum": ["valid", "stale", "revoked", "insufficient_evidence"]},
+        "valid_from": {"type": "string", "format": "date-time"},
+        "valid_until": {"type": "string", "format": "date-time"},
+        "invalidated_by_configuration_change": {"type": "boolean"}
+      }
+    }
+  }
+}

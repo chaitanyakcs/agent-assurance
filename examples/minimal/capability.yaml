@@ -1,0 +1,25 @@
+apiVersion: assurance.agent/v0
+kind: Capability
+subject:
+  provider: example-provider
+  agent: example-coding-agent
+  model: example-model
+  configuration: example-agent-v1
+  configuration_digest: sha256:example
+scope:
+  repository: example/finance-api
+  stage: implementation
+  task_family: bugfix
+  risk_domain: payments
+  max_risk: medium
+evaluation:
+  attempted: 42
+  successful: 38
+  independent_trials: 3
+  benchmark: private-historical-v1
+  score: 0.905
+qualification:
+  level: L3
+  confidence: high
+  status: valid
+  invalidated_by_configuration_change: true

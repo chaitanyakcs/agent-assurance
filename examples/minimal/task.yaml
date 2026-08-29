@@ -1,0 +1,19 @@
+apiVersion: assurance.agent/v0
+kind: Task
+metadata:
+  id: task-001
+  title: Prevent duplicate receipt processing
+classification:
+  stage: implementation
+  family: bugfix
+  complexity: medium
+  risk_domain: payments
+  risk: medium
+  blast_radius: service
+source:
+  repository: example/finance-api
+  revision: abc123
+  issue: EX-42
+requirements:
+  - A duplicate message must not create a second expense.
+  - Existing receipt processing must continue to work.
