@@ -19,6 +19,20 @@ The selected repository should have:
 - no unusually complex proprietary infrastructure requirements;
 - a license and contributor history compatible with this evaluation use.
 
+## Initial target repository
+
+The first replay target is [pallets/click](https://github.com/pallets/click).
+It was selected after comparing Click, attrs, HTTPX, Rich, and itsdangerous
+against the criteria above. Click provides a large merged-PR corpus, a small
+Python codebase, deterministic pytest-based verification, and a useful mix of
+parser, terminal, typing, packaging, and API behavior changes without requiring
+network services.
+
+The initial candidate suite is documented in
+[`CLICK_REPLAY_CANDIDATES.md`](CLICK_REPLAY_CANDIDATES.md). The selection is a
+local historical evaluation only. It must not create issues, pull requests, or
+other automated interactions in the upstream repository.
+
 ## Reuse-first spike
 
 Before implementing historical mining or agent execution:

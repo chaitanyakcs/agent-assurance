@@ -112,3 +112,25 @@ Before implementing mining/execution, evaluate interoperability or adapters with
 Do not stabilize a protocol until real experiments demonstrate that the objects are useful and defensible.
 
 Stop, narrow, or merge upstream if an established standard covers the same semantics, portability fails, or teams do not use capability evidence to inform autonomy.
+
+---
+
+## D-010 — Use Click for the first historical replay
+
+**Status:** Accepted
+
+Use [pallets/click](https://github.com/pallets/click) as the first historical
+replay repository. Use attrs as the leading candidate for a later
+cross-repository transfer experiment.
+
+**Why:** Click ranked highest against the experiment criteria after comparison
+with attrs, HTTPX, Rich, and itsdangerous. It combines a large merged-PR corpus,
+a compact Python-only implementation, pytest-based verification, and diverse
+behavioral tasks. HTTPX carries more network and protocol-environment
+complexity, Rich has more rendering ambiguity, and attrs and itsdangerous have
+less varied candidate corpora for the first suite.
+
+**Consequence:** Reconstruct 10–15 Click tasks at their recorded pre-change
+commits. Keep all evaluation activity local and do not submit generated work or
+automated feedback upstream. Re-evaluate the choice if historical dependencies
+or held-out tests cannot be reproduced reliably.
