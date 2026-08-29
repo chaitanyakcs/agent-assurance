@@ -48,6 +48,11 @@ Before implementing historical mining or agent execution:
 
 Record the decision in `docs/DECISIONS.md`.
 
+**Spike result:** Completed on 2026-08-30. Use CodeProbe for historical mining
+and provenance, Harbor for isolated execution, and AIBench Arena's fail-to-pass
+method as a task acceptance gate. See [`REUSE_SPIKE.md`](REUSE_SPIKE.md) and
+decision D-011.
+
 ## Initial task mix
 
 Do not chase perfect balance with 10–15 tasks. Prefer diversity and replay quality.

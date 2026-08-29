@@ -134,3 +134,35 @@ less varied candidate corpora for the first suite.
 commits. Keep all evaluation activity local and do not submit generated work or
 automated feedback upstream. Re-evaluate the choice if historical dependencies
 or held-out tests cannot be reproduced reliably.
+
+---
+
+## D-011 — Split mining and execution across CodeProbe and Harbor
+
+**Status:** Accepted for the first experiment
+
+Use CodeProbe for candidate mining, historical-state reconstruction, task
+provenance, and initial verification-contract generation. Convert accepted
+tasks through a small adapter into Harbor tasks, then use Harbor for isolated
+multi-agent execution and trial result capture.
+
+Apply AIBench Arena's fail-to-pass validation rule before accepting any mined
+task: its verifier must fail at the pre-change state and pass after the
+historical fix is applied. A task that does not demonstrate this transition is
+rejected or receives a purpose-built held-out verifier.
+
+**Why:** CodeProbe most directly covers repository-history mining, but its
+Codex execution path is marked unsupported. Harbor supports Codex, Claude Code,
+and other agents in reproducible container environments and emits structured
+trial results. AIBench Arena has strong validation and contamination controls,
+but its agent process currently runs on the host and its task format is not the
+best interoperability boundary for this experiment.
+
+**Consequence:** Agent Assurance owns only two thin mappings:
+
+- CodeProbe task/provenance to the existing `Task` record and Harbor task
+  package;
+- Harbor `results.json` to the existing `Evidence` record.
+
+Do not adopt another project's ranking, capability, or policy model. Do not
+build an executor, sandbox, benchmark miner, or leaderboard.
