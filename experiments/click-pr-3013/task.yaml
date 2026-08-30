@@ -1,0 +1,21 @@
+apiVersion: assurance.agent/v0
+kind: Task
+metadata:
+  id: click-pr-3013
+  title: Handle quoted partial values in Fish completion
+classification:
+  stage: implementation
+  family: bugfix
+  complexity: low
+  risk_domain: developer_tooling
+  risk: low
+  blast_radius: component
+source:
+  repository: pallets/click
+  revision: 3be1f33c8e0b13295853f6aa64d1f7412b5312df
+  issue: https://github.com/pallets/click/issues/2995
+  historical_outcome: 701b313160be12752e49b3f7cea32402c0969a69
+requirements:
+  - Fish completion must handle an incomplete value that starts with a quote.
+  - The logical unquoted token must be used to select completion candidates.
+  - Existing Bash, Zsh, and Fish completion behavior must remain unchanged.

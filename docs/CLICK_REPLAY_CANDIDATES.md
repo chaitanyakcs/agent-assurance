@@ -24,10 +24,10 @@ whose main difficulty was unavailable platform infrastructure were excluded.
 | PR | Family | Pre-change commit | Change surface | Verification basis |
 | --- | --- | --- | --- | --- |
 | [#3152](https://github.com/pallets/click/pull/3152) | routine bug | `7f7bbe4569ea68e8dabee232eade069ef3310aea` | option parsing | Existing and held-out option tests for `is_flag=False` with `flag_value` |
-| [#3013](https://github.com/pallets/click/pull/3013) | routine bug | `1c68e531ef5e45f6facdb777c720d0f984614b81` | Fish completion | Existing shell-completion tests for quoted and escaped values |
+| [#3013](https://github.com/pallets/click/pull/3013) | routine bug | `3be1f33c8e0b13295853f6aa64d1f7412b5312df` | Fish completion | Existing shell-completion tests for quoted and escaped values |
 | [#3004](https://github.com/pallets/click/pull/3004) | routine bug | `a1235aacb1be55dc66ddcfefbf64dec44b6ab54d` | help rendering | Existing option tests plus held-out Enum-default cases |
 | [#2930](https://github.com/pallets/click/pull/2930) | routine bug | `011b9f9d190c71310264e6c54bae6259f5e38a9f` | flag typing/value | Existing option tests covering typed flags and falsey types |
-| [#3079](https://github.com/pallets/click/pull/3079) | debugging bug | `6a1c0d077311f180b356965914e2de5b9e0fdb44` | default resolution | Existing default tests plus order-invariance cases |
+| [#3079](https://github.com/pallets/click/pull/3079) | debugging bug | `2ed395b0b5ac4d56553ff715335f456f812cdc78` | default resolution | Existing default tests plus order-invariance cases |
 | [#2940](https://github.com/pallets/click/pull/2940) | debugging bug | `36deba8a95a2585de1a2aa4475b7f054f52830ac` | `CliRunner` input | Existing chain tests plus stdin/EOF regression coverage |
 | [#2935](https://github.com/pallets/click/pull/2935) | debugging bug | `884af5c20fdc95c9c7352df35c37273391464fb9` | nested completion | Existing shell-completion tests with held-out nesting cases |
 | [#3058](https://github.com/pallets/click/pull/3058) | feature/API | `16fe802a3f96c4c8fa3cd382f1a7577fda0c5321` | context resources | Existing context tests for exception propagation and normal close behavior |
@@ -52,7 +52,8 @@ risk-sensitive subprocess task.
 
 For each selected task:
 
-1. Check out the recorded pre-change commit, not the current branch.
+1. Check out the recorded pre-change commit, derived from the historical merge
+   commit's first parent, not the PR's potentially older merge-base SHA.
 2. Build the task narrative from the linked issue and information available
    before the PR, removing patch-specific solution hints.
 3. Preserve the historical patch as an oracle, never as agent-visible context.

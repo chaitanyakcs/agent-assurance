@@ -1,0 +1,28 @@
+schema_version = "1.4"
+
+[task]
+name = "agent-assurance/click-pr-3013"
+version = "0.1.0"
+description = "Handle quoted partial values in Fish completion"
+keywords = ["python", "click", "shell-completion", "pytest", "historical-replay"]
+
+[metadata]
+agent_assurance_task_id = "click-pr-3013"
+repository = "pallets/click"
+pre_change_commit = "3be1f33c8e0b13295853f6aa64d1f7412b5312df"
+historical_outcome = "701b313160be12752e49b3f7cea32402c0969a69"
+difficulty = "easy"
+category = "bugfix"
+
+[agent]
+timeout_sec = 600.0
+
+[verifier]
+timeout_sec = 120.0
+
+[environment]
+network_mode = "public"
+build_timeout_sec = 600.0
+cpus = 2
+memory_mb = 2048
+storage_mb = 4096

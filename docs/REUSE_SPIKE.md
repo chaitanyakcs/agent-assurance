@@ -108,7 +108,7 @@ completion for quoted or escaped parameters.
 The pilot is complete only when:
 
 1. the repository can be reconstructed at pre-change commit
-   `1c68e531ef5e45f6facdb777c720d0f984614b81`;
+   `3be1f33c8e0b13295853f6aa64d1f7412b5312df`;
 2. the verifier demonstrably fails before the fix and passes after it;
 3. the task converts into a valid Harbor package without solution leakage;
 4. Harbor's oracle run passes;
