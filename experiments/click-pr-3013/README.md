@@ -12,9 +12,8 @@ Local fail-to-pass validation on 2026-08-30:
 The temporary validation checkout was not committed and did not modify the
 upstream Click repository.
 
-Before a real trial, validate the Harbor package with its oracle agent, then
-run one configured coding agent and convert Harbor's `results.json` into an
-Agent Assurance Evidence record.
+Before a real trial, run one configured coding agent and convert Harbor's
+`results.json` into an Agent Assurance Evidence record.
 
 The task uses Harbor's `public` network baseline because its local Docker
 provider rejects network policies it cannot enforce. A real trial on this
@@ -26,5 +25,14 @@ network isolation, or record the uncontrolled network as an evidence caveat.
 The first local Harbor 0.22.0 Oracle attempt was cancelled during
 `docker compose build` after the Docker environment made no progress. Harbor's
 captured result had no agent result and no verifier result. This is classified
-as an infrastructure abort, not task evidence. Retry the Oracle gate after the
-local Docker backend is responsive.
+as an infrastructure abort, not task evidence.
+
+The Oracle gate passed on retry after Docker became responsive:
+
+- command: `uvx harbor run -p experiments/click-pr-3013/harbor -a oracle`
+- result: reward `1.0`, 1 completed trial, 0 errors;
+- runtime: 56 seconds;
+- Harbor result: `jobs/2026-08-30__10-03-47/result.json`.
+
+This validates the Harbor package mechanics. It is not a Capability trial for a
+coding agent configuration.
