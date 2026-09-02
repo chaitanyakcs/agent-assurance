@@ -36,3 +36,28 @@ The Oracle gate passed on retry after Docker became responsive:
 
 This validates the Harbor package mechanics. It is not a Capability trial for a
 coding agent configuration.
+
+## Codex trial status
+
+One real Codex trial passed on 2026-08-30:
+
+- command: `CODEX_FORCE_AUTH_JSON=1 uvx harbor run -p experiments/click-pr-3013/harbor -a codex -m gpt-5.5 --n-concurrent 1`
+- result: reward `1.0`, 1 completed trial, 0 errors;
+- runtime: 4 minutes 12 seconds;
+- Harbor job result: `jobs/2026-08-30__11-21-22/result.json`;
+- Harbor trial result: `jobs/2026-08-30__11-21-22/harbor__9pm7v7b/result.json`;
+- deterministic verifier output: `52 passed in 0.08s`.
+
+Two prior Codex attempts are classified as infrastructure/configuration aborts:
+
+- `jobs/2026-08-30__11-13-36/result.json`: missing explicit model name;
+- `jobs/2026-08-30__11-15-39/result.json` and
+  `jobs/2026-08-30__11-19-04/result.json`: model/auth mismatch before task
+  execution.
+
+The Evidence schema can represent the successful outcome, executor identity,
+duration, cost, and verifier artifact. It does not yet have structured fields
+for Harbor job ids, trial ids, task checksums, token/cache counts, exception
+classes, verifier environment mode, or network-enforcement caveats. The pilot
+Evidence records those as `outcome.notes` or `verification.details`; no schema
+change was required for this task.

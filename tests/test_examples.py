@@ -22,3 +22,12 @@ def test_click_pilot_task_validates():
     )
     errors = list(Draft202012Validator(schema).iter_errors(task))
     assert errors == []
+
+
+def test_click_pilot_evidence_validates():
+    schema = json.loads((ROOT / "schemas" / "evidence.schema.json").read_text())
+
+    for path in (ROOT / "experiments" / "click-pr-3013" / "evidence").glob("*.yaml"):
+        evidence = yaml.safe_load(path.read_text())
+        errors = list(Draft202012Validator(schema).iter_errors(evidence))
+        assert errors == []

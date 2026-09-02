@@ -7,6 +7,8 @@ import typer
 import yaml
 from jsonschema import Draft202012Validator
 
+from .harbor import evidence_from_harbor_trial
+
 app = typer.Typer(no_args_is_help=True, help="Agent Assurance reference CLI")
 
 SCHEMA_NAMES = {"task", "evidence", "capability", "decision"}
@@ -71,6 +73,34 @@ def validate(kind: str, document: Path) -> None:
         raise typer.Exit(code=1)
 
     typer.echo(f"VALID {kind}: {document}")
+
+
+@app.command("harbor-evidence")
+def harbor_evidence(
+    trial_result: Path,
+    output: Path,
+    task_id: str = typer.Option(..., help="Agent Assurance Task id."),
+    evidence_id: str = typer.Option(..., help="Evidence metadata id."),
+    verification_artifact: str | None = typer.Option(
+        None, help="Optional verifier artifact path or URI."
+    ),
+    notes: str | None = typer.Option(None, help="Optional outcome note prefix."),
+) -> None:
+    """Convert one Harbor trial result into one v0 Evidence document."""
+    evidence = evidence_from_harbor_trial(
+        trial_result,
+        task_id=task_id,
+        evidence_id=evidence_id,
+        verification_artifact=verification_artifact,
+        notes=notes,
+    )
+
+    output.parent.mkdir(parents=True, exist_ok=True)
+    output.write_text(
+        yaml.safe_dump(evidence, sort_keys=False),
+        encoding="utf-8",
+    )
+    typer.echo(f"Wrote Evidence: {output}")
 
 
 @app.command()
