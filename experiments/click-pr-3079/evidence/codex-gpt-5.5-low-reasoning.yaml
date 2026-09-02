@@ -1,0 +1,31 @@
+apiVersion: assurance.agent/v0
+kind: Evidence
+metadata:
+  id: evidence-click-pr-3079-codex-gpt-5-5-low-reasoning-20260902
+  created_at: '2026-09-02T15:46:33.887365Z'
+task:
+  id: click-pr-3079
+executor:
+  type: agent
+  provider: openai
+  agent: codex
+  model: gpt-5.5
+  configuration: harbor/codex@0.152.1/gpt-5.5 (reasoning_effort=low)
+  configuration_digest: sha256:be481bba771b71f79888edc7bd4954c53c328fa168f155e2510b6f0b6cc0390e
+outcome:
+  status: aborted
+  duration_seconds: 17472.589
+  cost: 0.30803100000000005
+  notes: 'Harbor local Docker provider used the task''s public network baseline; network
+    isolation was not enforced. Agent phase timed out after Harbor''s 600 second task
+    limit. Harbor trial_name=harbor__XWjHjk6. Harbor trial_uri=file:///Users/chaitanya/Work/repositories/agent-assurance/jobs/2026-09-02__16-25-20/harbor__XWjHjk6.
+    Harbor task_checksum=c94f7d9788ce82c0ac3b6a992bcead35defc8b163683d7b9205a5b9ddd9eb57b.
+    Harbor input_tokens=295535. Harbor cache_tokens=272768. Harbor output_tokens=1022.
+    Harbor exception: AgentTimeoutError.'
+verification:
+- type: test
+  name: Harbor verifier reward
+  result: not_run
+  independent: true
+  details: reward=0.0; verifier_environment_mode='shared'
+  artifact: jobs/2026-09-02__16-25-20/harbor__XWjHjk6/verifier/test-stdout.txt

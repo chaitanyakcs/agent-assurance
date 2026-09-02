@@ -17,3 +17,7 @@ network isolation, or record the uncontrolled network as an evidence caveat.
 - Harbor Oracle passed on 2026-09-02: reward `1.0`, 0 errors.
 - Codex `gpt-5.5` passed on 2026-09-02: reward `1.0`, 0 errors.
 - Evidence: `experiments/click-pr-3079/evidence/codex-gpt-5.5.yaml`.
+- Codex `gpt-5.5` with `reasoning_effort=low` timed out during agent
+  execution on 2026-09-02: reward `0.0`, `AgentTimeoutError`.
+- Evidence:
+  `experiments/click-pr-3079/evidence/codex-gpt-5.5-low-reasoning.yaml`.
