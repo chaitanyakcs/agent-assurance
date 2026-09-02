@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import json
+import hashlib
 from datetime import datetime
 from pathlib import Path
 from typing import Any
@@ -36,7 +37,9 @@ def evidence_from_harbor_trial(
     if started is not None and finished is not None:
         duration_seconds = max((finished - started).total_seconds(), 0.0)
 
-    configuration = _configuration_name(agent_info, model_info)
+    agent_config = ((trial.get("config") or {}).get("agent") or {})
+    configuration_subject = _configuration_subject(agent_info, model_info, agent_config)
+    configuration = _configuration_name(configuration_subject)
 
     outcome: dict[str, Any] = {"status": status}
 
@@ -88,17 +91,47 @@ def evidence_from_harbor_trial(
             "agent": agent_info.get("name", "unknown"),
             "model": model_info.get("name", "unknown"),
             "configuration": configuration,
+            "configuration_digest": _configuration_digest(configuration_subject),
         },
         "outcome": outcome,
         "verification": [verification],
     }
 
 
-def _configuration_name(agent_info: dict[str, Any], model_info: dict[str, Any]) -> str:
-    agent = agent_info.get("name", "unknown-agent")
-    version = agent_info.get("version", "unknown-version")
-    model = model_info.get("name", "unknown-model")
-    return f"harbor/{agent}@{version}/{model}"
+def _configuration_subject(
+    agent_info: dict[str, Any],
+    model_info: dict[str, Any],
+    agent_config: dict[str, Any],
+) -> dict[str, Any]:
+    return {
+        "harness": "harbor",
+        "agent": agent_info.get("name", "unknown-agent"),
+        "agent_version": agent_info.get("version", "unknown-version"),
+        "provider": model_info.get("provider", "unknown-provider"),
+        "model": model_info.get("name", "unknown-model"),
+        "kwargs": agent_config.get("kwargs") or {},
+        "mcp_servers": agent_config.get("mcp_servers") or [],
+        "skills": agent_config.get("skills") or [],
+    }
+
+
+def _configuration_name(subject: dict[str, Any]) -> str:
+    name = (
+        f"{subject['harness']}/{subject['agent']}@{subject['agent_version']}/"
+        f"{subject['model']}"
+    )
+    kwargs = subject.get("kwargs") or {}
+
+    if kwargs:
+        rendered = ",".join(f"{key}={kwargs[key]}" for key in sorted(kwargs))
+        name = f"{name} ({rendered})"
+
+    return name
+
+
+def _configuration_digest(subject: dict[str, Any]) -> str:
+    encoded = json.dumps(subject, sort_keys=True, separators=(",", ":")).encode()
+    return "sha256:" + hashlib.sha256(encoded).hexdigest()
 
 
 def _verification_result(

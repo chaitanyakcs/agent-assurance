@@ -15,13 +15,13 @@ def test_minimal_examples_validate():
         assert errors == []
 
 
-def test_click_pilot_task_validates():
+def test_click_pilot_tasks_validate():
     schema = json.loads((ROOT / "schemas" / "task.schema.json").read_text())
-    task = yaml.safe_load(
-        (ROOT / "experiments" / "click-pr-3013" / "task.yaml").read_text()
-    )
-    errors = list(Draft202012Validator(schema).iter_errors(task))
-    assert errors == []
+
+    for path in sorted((ROOT / "experiments").glob("click-pr-*/task.yaml")):
+        task = yaml.safe_load(path.read_text())
+        errors = list(Draft202012Validator(schema).iter_errors(task))
+        assert errors == []
 
 
 def test_click_pilot_evidence_validates():

@@ -1,0 +1,21 @@
+apiVersion: assurance.agent/v0
+kind: Task
+metadata:
+  id: click-pr-3004
+  title: Render Enum choice defaults by name in help output
+classification:
+  stage: implementation
+  family: bugfix
+  complexity: low
+  risk_domain: developer_tooling
+  risk: low
+  blast_radius: component
+source:
+  repository: pallets/click
+  revision: a1235aacb1be55dc66ddcfefbf64dec44b6ab54d
+  issue: https://github.com/pallets/click/issues/2911
+  historical_outcome: 006e117801656f84176f9fcb1daf23a28ab5d4d8
+requirements:
+  - Help output for Choice options backed by Enum classes must show default names.
+  - Existing non-Enum default rendering must remain unchanged.
+  - The stored default value must not be coerced only for display.

@@ -1,0 +1,42 @@
+diff --git a/tests/test_options.py b/tests/test_options.py
+--- a/tests/test_options.py
++++ b/tests/test_options.py
+@@ -2275,3 +2275,36 @@ def test_custom_type_frozenset_flag_value(runner):
+     result = runner.invoke(rcli, ["--without-scm-ignore-files"])
+     assert result.stdout == "frozenset()"
+     assert result.exit_code == 0
++
++
++@pytest.mark.parametrize(
++    ("flag_type", "args", "expect_output"),
++    [
++        (str, [], "Default\n"),
++        (str, ["--theflag"], "FlagValue\n"),
++        (str, ["--theflag", "value"], "value\n"),
++        (int, [], "0\n"),
++        (int, ["--theflag"], "1\n"),
++        (int, ["--theflag", "2"], "2\n"),
++    ],
++)
++def test_flag_value_on_option_with_zero_or_one_args(runner, flag_type, args, expect_output):
++    if flag_type is str:
++        flagopt = click.option(
++            "--theflag",
++            type=str,
++            is_flag=False,
++            flag_value="FlagValue",
++            default="Default",
++        )
++    else:
++        flagopt = click.option(
++            "--theflag", type=int, is_flag=False, flag_value=1, default=0
++        )
++
++    @click.command()
++    @flagopt
++    def cmd(theflag):
++        click.echo(theflag)
++
++    result = runner.invoke(cmd, args)
++    assert result.exit_code == 0
++    assert result.output == expect_output

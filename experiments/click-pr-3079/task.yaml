@@ -1,0 +1,22 @@
+apiVersion: assurance.agent/v0
+kind: Task
+metadata:
+  id: click-pr-3079
+  title: Make shared flag defaults order-insensitive
+classification:
+  stage: implementation
+  family: bugfix
+  complexity: medium
+  risk_domain: developer_tooling
+  risk: low
+  blast_radius: component
+source:
+  repository: pallets/click
+  revision: 2ed395b0b5ac4d56553ff715335f456f812cdc78
+  issue: https://github.com/pallets/click/issues/3071
+  historical_outcome: f5cc8a24400618dd99a29dfb2056b7d696d350a2
+requirements:
+  - Multiple flags that write to the same parameter name must respect the intended default.
+  - The default must not depend on the declaration order of sibling flags.
+  - Explicit flag values must still override the default.
+  - User callbacks must not receive Click's internal unset sentinel.

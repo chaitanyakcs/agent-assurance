@@ -1,0 +1,28 @@
+schema_version = "1.4"
+
+[task]
+name = "agent-assurance/click-pr-3079"
+version = "0.1.0"
+description = "Make shared flag defaults order-insensitive"
+keywords = ["python", "click", "defaults", "flags", "pytest", "historical-replay"]
+
+[metadata]
+agent_assurance_task_id = "click-pr-3079"
+repository = "pallets/click"
+pre_change_commit = "2ed395b0b5ac4d56553ff715335f456f812cdc78"
+historical_outcome = "f5cc8a24400618dd99a29dfb2056b7d696d350a2"
+difficulty = "medium"
+category = "bugfix"
+
+[agent]
+timeout_sec = 600.0
+
+[verifier]
+timeout_sec = 120.0
+
+[environment]
+network_mode = "public"
+build_timeout_sec = 600.0
+cpus = 2
+memory_mb = 2048
+storage_mb = 4096

@@ -201,3 +201,14 @@ Produce:
 - a short experiment report documenting schema failures and reuse decisions.
 
 Only then consider an RFC.
+
+## Current pilot progress
+
+As of 2026-09-02:
+
+- 4 replayable Click tasks are packaged: #3013, #3152, #3004, and #3079.
+- All 4 packages have passed the Harbor Oracle gate.
+- Codex `gpt-5.5` has passed all 4 tasks.
+- A second Codex configuration, `gpt-5.5` with `reasoning_effort=low`, has
+  passed #3013.
+- Evidence records exist for completed real-agent trials.

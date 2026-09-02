@@ -1,0 +1,69 @@
+diff --git a/tests/test_options.py b/tests/test_options.py
+--- a/tests/test_options.py
++++ b/tests/test_options.py
+@@ -1,4 +1,5 @@
++import enum
+ import os
+ import re
+ 
+ import pytest
+@@ -1300,6 +1301,16 @@ def test_non_flag_with_non_negatable_default(runner):
+     assert result.exit_code == 0
+ 
+ 
++class HashType(enum.Enum):
++    MD5 = enum.auto()
++    SHA1 = enum.auto()
++
++
++class Number(enum.IntEnum):
++    ONE = enum.auto()
++    TWO = enum.auto()
++
++
+ @pytest.mark.parametrize(
+     ("choices", "metavars"),
+     [
+@@ -1335,6 +1346,42 @@ def test_usage_show_choices(runner, choices, metavars):
+     assert metavars in result.output
+ 
+ 
++@pytest.mark.parametrize(
++    ("choices", "default", "default_string"),
++    [
++        (["foo", "bar"], "bar", "bar"),
++        (["foo", "bar"], "random", "random"),
++        (["foo", "bar"], None, None),
++        ([0, 1], 0, "0"),
++        ([0, 1], 0.0, "0.0"),
++        ([1, 2], 2, "2"),
++        ([1.0, 2.0], 2, "2"),
++        ([1.0, 2.0], 2.0, "2.0"),
++        ([True, False], True, "True"),
++        ([True, False], False, "False"),
++        (["foo", 1], "foo", "foo"),
++        (["foo", 1], 1, "1"),
++        (HashType, HashType.SHA1, "SHA1"),
++        (HashType, "SHA1", "SHA1"),
++        (Number, Number.TWO, "TWO"),
++    ],
++)
++def test_choice_default_rendering(runner, choices, default, default_string):
++    @click.command()
++    @click.option("-g", type=click.Choice(choices), default=default, show_default=True)
++    def cli_with_choices(g):
++        pass
++
++    assert cli_with_choices.params[0].default == default
++
++    result = runner.invoke(cli_with_choices, ["--help"])
++    extra_usage = f"[default: {default_string}]"
++    if default_string is None:
++        assert extra_usage not in result.output
++    else:
++        assert extra_usage in result.output
++
++
+ @pytest.mark.parametrize(
+     "opts_one,opts_two",
+     [

@@ -61,3 +61,10 @@ for Harbor job ids, trial ids, task checksums, token/cache counts, exception
 classes, verifier environment mode, or network-enforcement caveats. The pilot
 Evidence records those as `outcome.notes` or `verification.details`; no schema
 change was required for this task.
+
+A second Codex configuration passed on 2026-09-02:
+
+- command: `CODEX_FORCE_AUTH_JSON=1 uvx harbor run -p experiments/click-pr-3013/harbor -a codex -m gpt-5.5 --ak reasoning_effort=low --n-concurrent 1`
+- result: reward `1.0`, 1 completed trial, 0 errors;
+- Harbor trial result: `jobs/2026-09-02__07-51-37/harbor__NMmPcUL/result.json`;
+- Evidence: `experiments/click-pr-3013/evidence/codex-gpt-5.5-low-reasoning.yaml`.

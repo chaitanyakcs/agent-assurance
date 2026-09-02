@@ -1,0 +1,28 @@
+schema_version = "1.4"
+
+[task]
+name = "agent-assurance/click-pr-3152"
+version = "0.1.0"
+description = "Allow optional values for non-flag options with flag_value"
+keywords = ["python", "click", "option-parsing", "pytest", "historical-replay"]
+
+[metadata]
+agent_assurance_task_id = "click-pr-3152"
+repository = "pallets/click"
+pre_change_commit = "7f7bbe4569ea68e8dabee232eade069ef3310aea"
+historical_outcome = "955ca49b5eb8887d3f3f116c4ce6de2f0b9bb992"
+difficulty = "easy"
+category = "bugfix"
+
+[agent]
+timeout_sec = 600.0
+
+[verifier]
+timeout_sec = 120.0
+
+[environment]
+network_mode = "public"
+build_timeout_sec = 600.0
+cpus = 2
+memory_mb = 2048
+storage_mb = 4096
