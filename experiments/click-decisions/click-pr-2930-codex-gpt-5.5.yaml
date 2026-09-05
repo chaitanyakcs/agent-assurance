@@ -24,3 +24,4 @@ reason:
   - The selected configuration passed 4 of 4 replay tasks with deterministic Harbor verifier rewards.
   - Confidence remains low because the sample is small and limited to one repository.
   - Opening a pull request and merging still require human review at this stage.
+  - Follow-up held-out execution passed with Evidence evidence-click-pr-2930-codex-gpt-5-5-20260906, but Harbor installed Codex CLI 0.153.4 instead of the 0.152.1 configuration referenced by this Decision.

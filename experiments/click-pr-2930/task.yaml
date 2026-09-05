@@ -1,0 +1,22 @@
+apiVersion: assurance.agent/v0
+kind: Task
+metadata:
+  id: click-pr-2930
+  title: Preserve implicit flag values when a flag has an explicit type
+classification:
+  stage: implementation
+  family: bugfix
+  complexity: low
+  risk_domain: developer_tooling
+  risk: low
+  blast_radius: component
+source:
+  repository: pallets/click
+  revision: 011b9f9d190c71310264e6c54bae6259f5e38a9f
+  issue: https://github.com/pallets/click/issues/2894
+  historical_outcome: 4fd2fea0db423d242aedcae0a5f664efe0a93484
+requirements:
+  - A flag with is_flag=True and an explicit type must still use the correct implicit flag value.
+  - A flag with default=True must toggle to False when passed.
+  - Bool ParamType behavior must match Python bool behavior.
+  - Non-bool typed flag behavior must remain compatible with existing Click semantics.

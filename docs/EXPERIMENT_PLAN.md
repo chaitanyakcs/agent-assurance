@@ -216,3 +216,7 @@ As of 2026-09-02:
 - First provisional Capability records exist for both Codex configurations.
 - One advisory Decision exists for held-out task #2930 using the stronger
   `gpt-5.5` configuration.
+- Held-out task #2930 passed under `gpt-5.5`, but Harbor installed Codex CLI
+  `0.153.4` instead of the `0.152.1` configuration referenced by the advisory
+  Decision. Treat this as supportive evidence with configuration drift, not a
+  strict confirmation.
