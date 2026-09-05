@@ -213,3 +213,6 @@ As of 2026-09-02:
   passed #3013, #3152, and #3004, and timed out during agent execution on
   #3079.
 - Evidence records exist for completed real-agent trials.
+- First provisional Capability records exist for both Codex configurations.
+- One advisory Decision exists for held-out task #2930 using the stronger
+  `gpt-5.5` configuration.

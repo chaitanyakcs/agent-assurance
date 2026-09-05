@@ -1,0 +1,26 @@
+apiVersion: assurance.agent/v0
+kind: Decision
+task:
+  id: click-pr-2930
+  risk: low
+subject:
+  configuration: harbor/codex@0.152.1/gpt-5.5
+  configuration_digest: sha256:3810c2f1b478418758d7588c996eebab8977c38d8adb19c39d65f9685d2ee183
+capability:
+  required: L1
+  demonstrated: L1
+  confidence: low
+permissions:
+  assist: allow
+  implement: allow
+  open_pr: require_human
+  merge: require_human
+required_runtime_evidence:
+  - harbor_verifier_reward_pass
+  - repository_tests_pass
+  - human_review_before_pull_request
+reason:
+  - The task is a low-risk Click implementation bugfix in the same repository and task family as the demonstrated mini-suite.
+  - The selected configuration passed 4 of 4 replay tasks with deterministic Harbor verifier rewards.
+  - Confidence remains low because the sample is small and limited to one repository.
+  - Opening a pull request and merging still require human review at this stage.

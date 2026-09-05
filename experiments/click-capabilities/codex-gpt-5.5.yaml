@@ -1,0 +1,26 @@
+apiVersion: assurance.agent/v0
+kind: Capability
+subject:
+  provider: openai
+  agent: codex
+  model: gpt-5.5
+  configuration: harbor/codex@0.152.1/gpt-5.5
+  configuration_digest: sha256:3810c2f1b478418758d7588c996eebab8977c38d8adb19c39d65f9685d2ee183
+scope:
+  repository: pallets/click
+  stage: implementation
+  task_family: bugfix
+  risk_domain: developer_tooling
+  max_risk: low
+evaluation:
+  attempted: 4
+  successful: 4
+  independent_trials: 4
+  benchmark: click-mini-suite-2026-09-02
+  score: 1.0
+qualification:
+  level: L1
+  confidence: low
+  status: valid
+  valid_from: "2026-09-02T02:20:41.993122Z"
+  invalidated_by_configuration_change: true

@@ -31,3 +31,21 @@ def test_click_pilot_evidence_validates():
         evidence = yaml.safe_load(path.read_text())
         errors = list(Draft202012Validator(schema).iter_errors(evidence))
         assert errors == []
+
+
+def test_click_capabilities_validate():
+    schema = json.loads((ROOT / "schemas" / "capability.schema.json").read_text())
+
+    for path in sorted((ROOT / "experiments" / "click-capabilities").glob("*.yaml")):
+        capability = yaml.safe_load(path.read_text())
+        errors = list(Draft202012Validator(schema).iter_errors(capability))
+        assert errors == []
+
+
+def test_click_decisions_validate():
+    schema = json.loads((ROOT / "schemas" / "decision.schema.json").read_text())
+
+    for path in sorted((ROOT / "experiments" / "click-decisions").glob("*.yaml")):
+        decision = yaml.safe_load(path.read_text())
+        errors = list(Draft202012Validator(schema).iter_errors(decision))
+        assert errors == []
