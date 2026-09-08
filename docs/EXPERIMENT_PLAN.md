@@ -227,3 +227,13 @@ As of 2026-09-08:
 - One #3004 attempt aborted during Codex installation before agent execution or
   verification. It is recorded as infrastructure Evidence and excluded from
   Capability trial counts; a retry completed and passed.
+- 5 additional replay tasks are packaged and Oracle-validated: #2940, #2935,
+  #3058, #2630, and #3023. Each hidden verifier fails at its pinned pre-change
+  commit and passes with its Oracle patch.
+- Codex `harbor/codex@0.153.4/gpt-5.5` passed all 5 additional tasks. Its
+  bugfix Capability is now 7/7 at L1 with low confidence. The feature, typing,
+  and refactor results remain separate L0 profiles with insufficient evidence
+  after one trial each.
+- A #2940 verifier-packaging abort and a #2630 agent-setup timeout are recorded
+  separately as infrastructure Evidence and excluded from Capability counts;
+  both corrected retries passed.

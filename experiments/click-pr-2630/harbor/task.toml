@@ -1,0 +1,23 @@
+schema_version = "1.4"
+[task]
+name = "agent-assurance/click-pr-2630"
+version = "0.1.0"
+description = "Specialize progressbar length-only typing as ProgressBar[int]"
+keywords = ["python", "click", "typing", "mypy", "historical-replay"]
+[metadata]
+agent_assurance_task_id = "click-pr-2630"
+repository = "pallets/click"
+pre_change_commit = "0d69b6ce8b25fe31ea580c608adb8e45df3805bb"
+historical_outcome = "2cabbe3175026695210fe0bf9b179fd62d52634f"
+difficulty = "medium"
+category = "typing"
+[agent]
+timeout_sec = 600.0
+[verifier]
+timeout_sec = 120.0
+[environment]
+network_mode = "public"
+build_timeout_sec = 600.0
+cpus = 2
+memory_mb = 2048
+storage_mb = 4096

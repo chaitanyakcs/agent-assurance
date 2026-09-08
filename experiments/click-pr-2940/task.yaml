@@ -1,0 +1,21 @@
+apiVersion: assurance.agent/v0
+kind: Task
+metadata:
+  id: click-pr-2940
+  title: Preserve stdin file input without converting EOF into Abort
+classification:
+  stage: implementation
+  family: bugfix
+  complexity: medium
+  risk_domain: developer_tooling
+  risk: low
+  blast_radius: local
+source:
+  repository: pallets/click
+  revision: 36deba8a95a2585de1a2aa4475b7f054f52830ac
+  issue: https://github.com/pallets/click/issues/2939
+  historical_outcome: 2a0e3ba907927ade6951d5732b775f11b54cb766
+requirements:
+  - Preserve EOF behavior for interactive prompts.
+  - Commands consuming stdin through click.File must not abort at normal EOF.
+  - Hidden chain-command tests pass.

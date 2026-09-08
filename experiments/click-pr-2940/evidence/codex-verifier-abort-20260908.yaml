@@ -1,0 +1,33 @@
+apiVersion: assurance.agent/v0
+kind: Evidence
+metadata:
+  id: evidence-click-pr-2940-codex-verifier-abort-20260908
+  created_at: '2026-09-08T12:34:53.061592Z'
+task:
+  id: click-pr-2940
+executor:
+  type: agent
+  provider: openai
+  agent: codex
+  model: gpt-5.5
+  configuration: harbor/codex@0.153.4/gpt-5.5
+  configuration_digest: sha256:c6b4cdec607e89926e1da8ccafccb60c3a8f4e66c18c3c37369782c747f5ce0c
+outcome:
+  status: aborted
+  duration_seconds: 294.588
+  cost: 0.7601990000000001
+  notes: 'Infrastructure failure: the initial hidden test patch collided with agent
+    edits, so Harbor could not produce a verifier reward. The agent executed, but
+    this record is excluded from Capability trial counts because verification did
+    not run to a valid result. Harbor local Docker provider used the task''s public
+    network baseline; network isolation was not enforced. Harbor trial_name=harbor__FmxgfZ5.
+    Harbor trial_uri=file:///Users/chaitanya/Work/repositories/agent-assurance/jobs/2026-09-08__17-59-58/harbor__FmxgfZ5.
+    Harbor task_checksum=e41e7c3c45865a02b9618a95881f47c28960ba8ea5b8189e8ff37405089303dc.
+    Harbor input_tokens=682315. Harbor cache_tokens=620288. Harbor output_tokens=4664.
+    Harbor exception: RewardFileNotFoundError.'
+verification:
+- type: test
+  name: Harbor verifier reward
+  result: not_run
+  independent: true
+  details: reward=None; verifier_environment_mode='shared'

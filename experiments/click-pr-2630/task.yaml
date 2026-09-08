@@ -1,0 +1,22 @@
+apiVersion: assurance.agent/v0
+kind: Task
+metadata:
+  id: click-pr-2630
+  title: Specialize progressbar length-only typing
+classification:
+  stage: implementation
+  family: typing
+  complexity: medium
+  risk_domain: developer_tooling
+  risk: low
+  blast_radius: local
+source:
+  repository: pallets/click
+  revision: 0d69b6ce8b25fe31ea580c608adb8e45df3805bb
+  issue: https://github.com/pallets/click/pull/2630
+  historical_outcome: 2cabbe3175026695210fe0bf9b179fd62d52634f
+requirements:
+  - progressbar(length=N) is typed as ProgressBar[int].
+  - Iterable-based progress bars preserve their item type.
+  - Runtime behavior is unchanged.
+  - Hidden mypy assertions pass.

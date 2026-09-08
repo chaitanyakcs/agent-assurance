@@ -9,18 +9,18 @@ subject:
 scope:
   repository: pallets/click
   stage: implementation
-  task_family: bugfix
+  task_family: feature
   risk_domain: developer_tooling
-  max_risk: low
+  max_risk: medium
 evaluation:
-  attempted: 7
-  successful: 7
-  independent_trials: 7
-  benchmark: click-bugfix-suite-2026-09-08
+  attempted: 1
+  successful: 1
+  independent_trials: 1
+  benchmark: click-feature-suite-2026-09-08
   score: 1.0
 qualification:
-  level: L1
+  level: L0
   confidence: low
-  status: valid
-  valid_from: "2026-09-05T18:39:30.329280Z"
+  status: insufficient_evidence
+  valid_from: "2026-09-08T17:47:38.932279Z"
   invalidated_by_configuration_change: true

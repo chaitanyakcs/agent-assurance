@@ -1,0 +1,12 @@
+diff --git a/src/click/shell_completion.py b/src/click/shell_completion.py
+index cdb5822..6c39d5e 100644
+--- a/src/click/shell_completion.py
++++ b/src/click/shell_completion.py
+@@ -570 +569,0 @@ def _resolve_context(
+-                        args = ctx._protected_args + ctx.args
+@@ -571,0 +571 @@ def _resolve_context(
++                        args = ctx._protected_args + ctx.args
+@@ -589 +588,0 @@ def _resolve_context(
+-                            args = sub_ctx.args
+@@ -590,0 +590 @@ def _resolve_context(
++                            args = sub_ctx.args

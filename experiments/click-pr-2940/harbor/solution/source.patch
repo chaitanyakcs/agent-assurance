@@ -1,0 +1,24 @@
+diff --git a/src/click/testing.py b/src/click/testing.py
+index 3d3cb17..f6f60b8 100644
+--- a/src/click/testing.py
++++ b/src/click/testing.py
+@@ -130,7 +129,0 @@ class _NamedTextIOWrapper(io.TextIOWrapper):
+-    def __next__(self) -> str:  # type: ignore
+-        try:
+-            line = super().__next__()
+-        except StopIteration as e:
+-            raise EOFError() from e
+-        return line
+-
+@@ -362 +355,4 @@ class CliRunner:
+-            val = next(text_input).rstrip("\r\n")
++            try:
++                val = next(text_input).rstrip("\r\n")
++            except StopIteration as e:
++                raise EOFError() from e
+@@ -371 +367,4 @@ class CliRunner:
+-            return next(text_input).rstrip("\r\n")
++            try:
++                return next(text_input).rstrip("\r\n")
++            except StopIteration as e:
++                raise EOFError() from e

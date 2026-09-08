@@ -1,0 +1,9 @@
+diff --git a/tests/test_chain.py b/tests/test_chain.py
+index ba11b7e..702eaaa 100644
+--- a/tests/test_chain.py
++++ b/tests/test_chain.py
+@@ -166,2 +166,2 @@ def test_pipeline(runner, args, input, expect):
+-    # last two lines are '' and 'Aborted!'
+-    assert result.output.splitlines()[:-2] == expect
++    assert not result.exception
++    assert result.output.splitlines() == expect

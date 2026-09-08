@@ -1,0 +1,30 @@
+diff --git a/src/click/core.py b/src/click/core.py
+index 679336a..ff2f74a 100644
+--- a/src/click/core.py
++++ b/src/click/core.py
+@@ -486 +486 @@ class Context:
+-    ) -> None:
++    ) -> bool | None:
+@@ -487,0 +488 @@ class Context:
++        exit_result: bool | None = None
+@@ -489 +490 @@ class Context:
+-            self.close()
++            exit_result = self._close_with_exception_info(exc_type, exc_value, tb)
+@@ -491,0 +493,2 @@ class Context:
++        return exit_result
++
+@@ -618 +621,10 @@ class Context:
+-        self._exit_stack.close()
++        self._close_with_exception_info(None, None, None)
++
++    def _close_with_exception_info(
++        self,
++        exc_type: type[BaseException] | None,
++        exc_value: BaseException | None,
++        tb: TracebackType | None,
++    ) -> bool | None:
++        """Close resources while preserving exception information."""
++        exit_result = self._exit_stack.__exit__(exc_type, exc_value, tb)
+@@ -621,0 +634,2 @@ class Context:
++        return exit_result
++

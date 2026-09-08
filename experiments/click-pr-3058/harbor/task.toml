@@ -1,0 +1,23 @@
+schema_version = "1.4"
+[task]
+name = "agent-assurance/click-pr-3058"
+version = "0.1.0"
+description = "Forward exception details to resources registered on a Click Context"
+keywords = ["python", "click", "context-manager", "exceptions", "historical-replay"]
+[metadata]
+agent_assurance_task_id = "click-pr-3058"
+repository = "pallets/click"
+pre_change_commit = "16fe802a3f96c4c8fa3cd382f1a7577fda0c5321"
+historical_outcome = "36deba8a95a2585de1a2aa4475b7f054f52830ac"
+difficulty = "medium"
+category = "feature"
+[agent]
+timeout_sec = 600.0
+[verifier]
+timeout_sec = 120.0
+[environment]
+network_mode = "public"
+build_timeout_sec = 600.0
+cpus = 2
+memory_mb = 2048
+storage_mb = 4096

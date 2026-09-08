@@ -1,0 +1,21 @@
+apiVersion: assurance.agent/v0
+kind: Task
+metadata:
+  id: click-pr-2935
+  title: Resolve shell completion through nested groups
+classification:
+  stage: implementation
+  family: bugfix
+  complexity: medium
+  risk_domain: developer_tooling
+  risk: low
+  blast_radius: local
+source:
+  repository: pallets/click
+  revision: 884af5c20fdc95c9c7352df35c37273391464fb9
+  issue: https://github.com/pallets/click/issues/2906
+  historical_outcome: b7cf06970e40a3144eb963ff34ed7c38934afb40
+requirements:
+  - Completion must follow the active nested command context.
+  - Parent and child options must be offered at the correct depth.
+  - Hidden nested-completion tests pass.

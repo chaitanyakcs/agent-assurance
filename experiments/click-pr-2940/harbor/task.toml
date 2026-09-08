@@ -1,0 +1,28 @@
+schema_version = "1.4"
+
+[task]
+name = "agent-assurance/click-pr-2940"
+version = "0.1.0"
+description = "Preserve stdin file input without converting normal EOF into Abort"
+keywords = ["python", "click", "stdin", "eof", "historical-replay"]
+
+[metadata]
+agent_assurance_task_id = "click-pr-2940"
+repository = "pallets/click"
+pre_change_commit = "36deba8a95a2585de1a2aa4475b7f054f52830ac"
+historical_outcome = "2a0e3ba907927ade6951d5732b775f11b54cb766"
+difficulty = "medium"
+category = "bugfix"
+
+[agent]
+timeout_sec = 600.0
+
+[verifier]
+timeout_sec = 120.0
+
+[environment]
+network_mode = "public"
+build_timeout_sec = 600.0
+cpus = 2
+memory_mb = 2048
+storage_mb = 4096

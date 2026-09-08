@@ -1,0 +1,21 @@
+apiVersion: assurance.agent/v0
+kind: Task
+metadata:
+  id: click-pr-3023
+  title: Keep shutil lazy during Click import
+classification:
+  stage: implementation
+  family: refactor
+  complexity: medium
+  risk_domain: developer_tooling
+  risk: low
+  blast_radius: component
+source:
+  repository: pallets/click
+  revision: 4f936ac1981645488f396953bc59e50445de00b6
+  issue: https://github.com/pallets/click/pull/3023
+  historical_outcome: 1f4002096439d6661f1df5ceff7eccd3862153ac
+requirements:
+  - Importing click does not import shutil.
+  - Pager, editor, formatting, progress bar, and test-runner behavior remain available.
+  - Hidden import-boundary test passes.

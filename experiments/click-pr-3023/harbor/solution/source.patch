@@ -1,0 +1,49 @@
+diff --git a/src/click/_termui_impl.py b/src/click/_termui_impl.py
+index b8f23a5..47f87b8 100644
+--- a/src/click/_termui_impl.py
++++ b/src/click/_termui_impl.py
+@@ -20 +19,0 @@ from pathlib import Path
+-from shutil import which
+@@ -238,2 +236,0 @@ class ProgressBar(t.Generic[V]):
+-        import shutil
+-
+@@ -252,0 +250,2 @@ class ProgressBar(t.Generic[V]):
++            import shutil
++
+@@ -423,0 +423,3 @@ def _pipepager(
++
++    import shutil
++
+@@ -427 +429 @@ def _pipepager(
+-    cmd_filepath = which(cmd)
++    cmd_filepath = shutil.which(cmd)
+@@ -512,0 +515,3 @@ def _tempfilepager(
++
++    import shutil
++
+@@ -515 +520 @@ def _tempfilepager(
+-    cmd_filepath = which(cmd)
++    cmd_filepath = shutil.which(cmd)
+@@ -575,0 +581,3 @@ class Editor:
++
++        from shutil import which
++
+diff --git a/src/click/formatting.py b/src/click/formatting.py
+index 9891f88..0b64f83 100644
+--- a/src/click/formatting.py
++++ b/src/click/formatting.py
+@@ -122,2 +121,0 @@ class HelpFormatter:
+-        import shutil
+-
+@@ -127,0 +126,2 @@ class HelpFormatter:
++            import shutil
++
+diff --git a/src/click/testing.py b/src/click/testing.py
+index 04d263e..3d3cb17 100644
+--- a/src/click/testing.py
++++ b/src/click/testing.py
+@@ -8 +7,0 @@ import shlex
+-import shutil
+@@ -573,0 +573,2 @@ class CliRunner:
++                import shutil
++

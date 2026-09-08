@@ -1,0 +1,29 @@
+apiVersion: assurance.agent/v0
+kind: Evidence
+metadata:
+  id: evidence-click-pr-2940-codex-gpt-5-5-cli-0-153-4-20260908
+  created_at: '2026-09-08T12:55:24.633205Z'
+task:
+  id: click-pr-2940
+executor:
+  type: agent
+  provider: openai
+  agent: codex
+  model: gpt-5.5
+  configuration: harbor/codex@0.153.4/gpt-5.5
+  configuration_digest: sha256:c6b4cdec607e89926e1da8ccafccb60c3a8f4e66c18c3c37369782c747f5ce0c
+outcome:
+  status: success
+  duration_seconds: 1127.317
+  cost: 0.9851750000000002
+  notes: Harbor local Docker provider used the task's public network baseline; network
+    isolation was not enforced. Harbor trial_name=harbor__CLFc9Za. Harbor trial_uri=file:///Users/chaitanya/Work/repositories/agent-assurance/jobs/2026-09-08__18-06-36/harbor__CLFc9Za.
+    Harbor task_checksum=0cb42f84242515cfd78ab23e22e1bfbb441028d89fb2e510df1cda4c0a4cd22d.
+    Harbor input_tokens=839071. Harbor cache_tokens=745600. Harbor output_tokens=4834.
+verification:
+- type: test
+  name: Harbor verifier reward
+  result: pass
+  independent: true
+  details: reward=1.0; verifier_environment_mode='shared'
+  artifact: jobs/2026-09-08__18-06-36/harbor__CLFc9Za/verifier/test-stdout.txt

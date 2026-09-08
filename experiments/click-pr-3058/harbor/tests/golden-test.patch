@@ -1,0 +1,55 @@
+diff --git a/tests/test_aa_pr_3058.py b/tests/test_aa_pr_3058.py
+new file mode 100644
+index 0000000..1ab10ad
+--- /dev/null
++++ b/tests/test_aa_pr_3058.py
+@@ -0,0 +1,49 @@
++from types import TracebackType
++from typing import Any
++
++import click
++import pytest
++
++
++class Resource:
++    def __init__(self, suppress: bool = False) -> None:
++        self.suppress = suppress
++        self.exit_info: tuple[Any, Any, TracebackType | None] | None = None
++
++    def __enter__(self) -> "Resource":
++        return self
++
++    def __exit__(
++        self,
++        exc_type: type[BaseException] | None,
++        exc_value: BaseException | None,
++        traceback: TracebackType | None,
++    ) -> bool:
++        self.exit_info = (exc_type, exc_value, traceback)
++        return self.suppress
++
++
++def test_resource_receives_and_suppresses_exception() -> None:
++    resource = Resource(suppress=True)
++    ctx = click.Context(click.Command("test"))
++
++    with ctx:
++        ctx.with_resource(resource)
++        raise ValueError("expected")
++
++    assert resource.exit_info is not None
++    assert resource.exit_info[0] is ValueError
++    assert str(resource.exit_info[1]) == "expected"
++
++
++def test_resource_receives_unsuppressed_exception() -> None:
++    resource = Resource()
++    ctx = click.Context(click.Command("test"))
++
++    with pytest.raises(ValueError, match="expected"):
++        with ctx:
++            ctx.with_resource(resource)
++            raise ValueError("expected")
++
++    assert resource.exit_info is not None
++    assert resource.exit_info[0] is ValueError

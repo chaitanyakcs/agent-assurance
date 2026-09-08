@@ -1,0 +1,22 @@
+apiVersion: assurance.agent/v0
+kind: Task
+metadata:
+  id: click-pr-3058
+  title: Forward exception details to Context resources
+classification:
+  stage: implementation
+  family: feature
+  complexity: medium
+  risk_domain: developer_tooling
+  risk: medium
+  blast_radius: component
+source:
+  repository: pallets/click
+  revision: 16fe802a3f96c4c8fa3cd382f1a7577fda0c5321
+  issue: https://github.com/pallets/click/issues/2447
+  historical_outcome: 36deba8a95a2585de1a2aa4475b7f054f52830ac
+requirements:
+  - Resources registered with Context.with_resource receive exception details.
+  - A resource may suppress an exception through its __exit__ return value.
+  - Normal Context.close behavior remains supported.
+  - Hidden context-resource lifecycle tests pass.
