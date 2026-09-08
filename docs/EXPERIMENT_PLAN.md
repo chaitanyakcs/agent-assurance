@@ -220,3 +220,7 @@ As of 2026-09-02:
   `0.153.4` instead of the `0.152.1` configuration referenced by the advisory
   Decision. Treat this as supportive evidence with configuration drift, not a
   strict confirmation.
+- A separate `harbor/codex@0.153.4/gpt-5.5` Capability profile records only the
+  held-out #2930 result. It remains L0 with insufficient evidence after one
+  successful trial, demonstrating that configuration drift is kept out of the
+  existing `0.152.1` aggregate.
