@@ -1,0 +1,29 @@
+apiVersion: assurance.agent/v0
+kind: Evidence
+metadata:
+  id: evidence-click-pr-3004-codex-setup-abort-20260908
+  created_at: '2026-09-08T10:05:38.368444Z'
+task:
+  id: click-pr-3004
+executor:
+  type: agent
+  provider: openai
+  agent: codex
+  model: gpt-5.5
+  configuration: harbor/codex@unknown/gpt-5.5
+  configuration_digest: sha256:3867fc921e631a6a8a5a7db46043b7c51530ec8ac7e2256f0c9c0f6b6f89068e
+outcome:
+  status: aborted
+  duration_seconds: 1516.433
+  notes: 'Infrastructure failure during Codex installation; agent execution did not
+    start and this record is excluded from Capability trial counts. Harbor local Docker
+    provider used the task''s public network baseline; network isolation was not enforced.
+    Harbor trial_name=harbor__VrMpeX2. Harbor trial_uri=file:///Users/chaitanya/Work/repositories/agent-assurance/jobs/2026-09-08__15-10-21/harbor__VrMpeX2.
+    Harbor task_checksum=2cb2485a4cf7bd796cf4ca441329c571016d6ee55845b28f0f4f2e4793f5c732.
+    Harbor exception: NonZeroAgentExitCodeError.'
+verification:
+- type: test
+  name: Harbor verifier reward
+  result: not_run
+  independent: true
+  details: reward=None; verifier_environment_mode='shared'

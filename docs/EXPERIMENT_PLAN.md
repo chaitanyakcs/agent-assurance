@@ -204,7 +204,7 @@ Only then consider an RFC.
 
 ## Current pilot progress
 
-As of 2026-09-02:
+As of 2026-09-08:
 
 - 4 replayable Click tasks are packaged: #3013, #3152, #3004, and #3079.
 - All 4 packages have passed the Harbor Oracle gate.
@@ -220,7 +220,10 @@ As of 2026-09-02:
   `0.153.4` instead of the `0.152.1` configuration referenced by the advisory
   Decision. Treat this as supportive evidence with configuration drift, not a
   strict confirmation.
-- A separate `harbor/codex@0.153.4/gpt-5.5` Capability profile records only the
-  held-out #2930 result. It remains L0 with insufficient evidence after one
-  successful trial, demonstrating that configuration drift is kept out of the
-  existing `0.152.1` aggregate.
+- A separate `harbor/codex@0.153.4/gpt-5.5` Capability profile combines the
+  held-out #2930 result with four subsequent mini-suite passes. It is L1 with
+  low confidence after five successful completed trials, demonstrating that
+  configuration drift is kept out of the existing `0.152.1` aggregate.
+- One #3004 attempt aborted during Codex installation before agent execution or
+  verification. It is recorded as infrastructure Evidence and excluded from
+  Capability trial counts; a retry completed and passed.

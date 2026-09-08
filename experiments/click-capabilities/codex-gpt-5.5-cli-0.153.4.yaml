@@ -13,14 +13,14 @@ scope:
   risk_domain: developer_tooling
   max_risk: low
 evaluation:
-  attempted: 1
-  successful: 1
-  independent_trials: 1
-  benchmark: click-held-out-2026-09-06
+  attempted: 5
+  successful: 5
+  independent_trials: 5
+  benchmark: click-mini-suite-plus-held-out-2026-09-08
   score: 1.0
 qualification:
-  level: L0
+  level: L1
   confidence: low
-  status: insufficient_evidence
+  status: valid
   valid_from: "2026-09-05T18:39:30.329280Z"
   invalidated_by_configuration_change: true
