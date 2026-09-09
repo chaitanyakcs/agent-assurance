@@ -71,8 +71,10 @@ The final query exposes an integrity problem, not merely poor query ergonomics.
 digest `sha256:3810c2f1...`, while the corresponding #3013 Evidence names
 `harbor/codex@0.151.0/gpt-5.5` and has no digest. This exploration does not
 rewrite that historical record or weaken identity matching to make the claim
-appear consistent. The Capability should be treated as having an
-unreconstructable support set until corrected by a new, auditable evaluation.
+appear consistent. The Capability was corrected to the three exact-digest
+trials, and its support set and exclusions are now recorded in a sidecar
+manifest. A new pinned #3013 trial would be required to establish a
+reconstructable 4/4 aggregate.
 
 ## Minimum linkage gaps
 

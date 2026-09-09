@@ -21,7 +21,7 @@ required_runtime_evidence:
   - human_review_before_pull_request
 reason:
   - The task is a low-risk Click implementation bugfix in the same repository and task family as the demonstrated mini-suite.
-  - The selected configuration passed 4 of 4 replay tasks with deterministic Harbor verifier rewards.
+  - The selected configuration has 3 exact-digest replay successes with deterministic Harbor verifier rewards; the earlier #3013 result is excluded because it identifies Codex CLI 0.151.0 and has no configuration digest.
   - Confidence remains low because the sample is small and limited to one repository.
   - Opening a pull request and merging still require human review at this stage.
-  - Follow-up held-out execution passed with Evidence evidence-click-pr-2930-codex-gpt-5-5-20260906, but Harbor installed Codex CLI 0.153.4 instead of the 0.152.1 configuration referenced by this Decision.
+  - Follow-up held-out execution passed with Evidence evidence-click-pr-2930-codex-gpt-5-5-20260906, but Harbor installed Codex CLI 0.153.4 instead of the 0.152.1 configuration referenced by this Decision, so it does not strengthen this configuration's Capability.

@@ -53,7 +53,7 @@ The experiment produced configuration-specific, task-scoped results:
 
 | Configuration | Scope | Completed result | Qualification |
 | --- | --- | --- | --- |
-| `harbor/codex@0.152.1/gpt-5.5` | Click bugfix | 4/4 | L1, low confidence |
+| `harbor/codex@0.152.1/gpt-5.5` | Click bugfix | 3/3 exact-digest records | L1, low confidence |
 | `harbor/codex@0.152.1/gpt-5.5 (reasoning_effort=low)` | Click bugfix | 3/4 | L0, insufficient evidence |
 | `harbor/codex@0.153.4/gpt-5.5` | Click bugfix | 7/7 | L1, low confidence |
 | `harbor/codex@0.153.4/gpt-5.5` | Click feature | 1/1 | L0, insufficient evidence |
@@ -147,7 +147,7 @@ agent configuration's inability to finish within its budget.
 
 Yes as an advisory, low-risk recommendation with human gates. Allowing local
 implementation while requiring human review before pull request and merge was
-proportionate to four bugfix passes and low confidence. The evidence does not
+proportionate to three exact-digest bugfix passes and low confidence. The evidence does not
 support unattended publication or merge authority.
 
 ## Schema mismatches observed

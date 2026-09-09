@@ -13,9 +13,9 @@ scope:
   risk_domain: developer_tooling
   max_risk: low
 evaluation:
-  attempted: 4
-  successful: 4
-  independent_trials: 4
+  attempted: 3
+  successful: 3
+  independent_trials: 3
   benchmark: click-mini-suite-2026-09-02
   score: 1.0
 qualification:
