@@ -1,5 +1,7 @@
 apiVersion: assurance.agent/v0
 kind: Capability
+metadata:
+  id: capability-click-bugfix-codex-0-152-1-default
 subject:
   provider: openai
   agent: codex
@@ -13,14 +15,17 @@ scope:
   risk_domain: developer_tooling
   max_risk: low
 evaluation:
-  attempted: 3
-  successful: 3
-  independent_trials: 3
+  attempted: 2
+  successful: 2
+  independent_trials: 2
   benchmark: click-mini-suite-2026-09-02
+  evidence_refs:
+    - evidence-click-pr-3004-codex-gpt-5-5-20260902
+    - evidence-click-pr-3079-codex-gpt-5-5-20260902
   score: 1.0
 qualification:
-  level: L1
+  level: L0
   confidence: low
-  status: valid
+  status: insufficient_evidence
   valid_from: "2026-09-02T02:20:41.993122Z"
   invalidated_by_configuration_change: true

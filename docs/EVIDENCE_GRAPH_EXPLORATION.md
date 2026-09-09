@@ -55,7 +55,7 @@ The following queries were evaluated manually against the committed records.
 
 | Query | Result | Finding |
 | --- | --- | --- |
-| What may Codex 0.153.4 do for low-risk Click bugfixes? | answerable | The matching Capability reports 7/7 and L1 with low confidence. |
+| What may Codex 0.153.4 do for low-risk Click bugfixes? | answerable | After excluding #3152's invalid verifier, the matching Capability reports 6/6 and L1 with low confidence. |
 | Which Evidence records support that Capability? | partially answerable | Seven records can be inferred by exact digest and task scope, but the Capability does not identify its support set or exclusion rule. |
 | Why did the Decision for Click #2930 permit implementation but not publication? | partially answerable | Permissions and prose explain the boundary; there is no direct Capability reference, and the held-out Evidence used a different configuration. |
 | What changed between the 0.152.1 and 0.153.4 configurations? | not answerable | Different digests prove different identities, but records do not retain a canonical component manifest or a `derived-from` relation. |
@@ -71,10 +71,10 @@ The final query exposes an integrity problem, not merely poor query ergonomics.
 digest `sha256:3810c2f1...`, while the corresponding #3013 Evidence names
 `harbor/codex@0.151.0/gpt-5.5` and has no digest. This exploration does not
 rewrite that historical record or weaken identity matching to make the claim
-appear consistent. The Capability was corrected to the three exact-digest
-trials, and its support set and exclusions are now recorded in a sidecar
-manifest. A new pinned #3013 trial would be required to establish a
-reconstructable 4/4 aggregate.
+appear consistent. The Capability was first corrected to three exact-digest
+trials, then to two after a no-op control invalidated #3152. Its support set and
+exclusions are recorded in a sidecar manifest. A new pinned #3013 trial and a
+repaired #3152 verifier would be required to rebuild that coverage.
 
 ## Minimum linkage gaps
 

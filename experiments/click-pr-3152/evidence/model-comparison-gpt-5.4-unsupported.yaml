@@ -1,0 +1,30 @@
+apiVersion: assurance.agent/v0
+kind: Evidence
+metadata:
+  id: evidence-click-pr-3152-model-comparison-gpt-5-4-unsupported-20260909
+  created_at: '2026-09-09T15:02:58.454087Z'
+task:
+  id: click-pr-3152
+executor:
+  type: agent
+  provider: openai
+  agent: codex
+  model: gpt-5.4
+  configuration: harbor/codex@0.153.4/gpt-5.4
+  configuration_digest: sha256:ff0bb237949649c97a17b9f5252c7ffed0cb22af3a4d9c8075ac2014db1b23fa
+outcome:
+  status: aborted
+  duration_seconds: 126.156
+  notes: 'Model-availability abort: gpt-5.4 is not supported by the ChatGPT-backed
+    Codex account. No agent work occurred; the passing verifier reflects the pre-existing
+    workspace and must not be attributed to this model. Harbor trial_name=harbor__HF68zbf.
+    Harbor trial_uri=file:///Users/chaitanya/Work/repositories/agent-assurance/jobs/2026-09-09__20-30-51/harbor__HF68zbf.
+    Harbor task_checksum=5856eba7aaba2819d9e5a9bcf4e7fa9674a3e2e3c16e08aa71ebce3ad08faec0.
+    Harbor exception: NonZeroAgentExitCodeError.'
+verification:
+- type: test
+  name: Harbor verifier reward
+  result: pass
+  independent: true
+  details: reward=1.0; verifier_environment_mode='shared'
+  artifact: jobs/2026-09-09__20-30-51/harbor__HF68zbf/verifier/test-stdout.txt

@@ -11,11 +11,10 @@ Configuration digest:
 
 | Evidence ID | Task | Result |
 | --- | --- | --- |
-| `evidence-click-pr-3152-codex-gpt-5-5-20260902` | `click-pr-3152` | success, verifier pass |
 | `evidence-click-pr-3004-codex-gpt-5-5-20260902` | `click-pr-3004` | success, verifier pass |
 | `evidence-click-pr-3079-codex-gpt-5-5-20260902` | `click-pr-3079` | success, verifier pass |
 
-The reconstructed aggregate is 3 attempted, 3 successful, and 3 independent
+The reconstructed aggregate is 2 attempted, 2 successful, and 2 independent
 trials. All included records contain the exact configuration digest above.
 
 ## Excluded Evidence
@@ -29,8 +28,13 @@ unchanged as a historical observation.
 configuration digest identifies Codex 0.153.4. It is follow-up Evidence for a
 different configuration, not confirmation of this Capability.
 
+All #3152 Evidence is excluded because a 2026-09-09 Harbor no-op control passed
+the hidden verifier with reward 1.0. The verifier therefore does not establish
+that an executor changed the pre-change workspace to meet the requirement.
+
 ## Correction
 
 The Capability previously reported 4/4 by including #3013 based on filename
 and suite convention. On 2026-09-09 it was corrected to 3/3 after exact lineage
-reconstruction exposed the version mismatch. No Evidence was modified.
+reconstruction exposed the version mismatch, then to 2/2 when the #3152 no-op
+control invalidated that verifier. No Evidence was modified.

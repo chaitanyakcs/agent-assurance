@@ -8,6 +8,14 @@
   "properties": {
     "apiVersion": {"const": "assurance.agent/v0"},
     "kind": {"const": "Decision"},
+    "metadata": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id"],
+      "properties": {
+        "id": {"type": "string", "minLength": 1}
+      }
+    },
     "task": {
       "type": "object",
       "additionalProperties": false,
@@ -31,6 +39,7 @@
       "additionalProperties": false,
       "required": ["required", "demonstrated", "confidence"],
       "properties": {
+        "ref": {"type": "string", "minLength": 1},
         "required": {"enum": ["L0", "L1", "L2", "L3", "L4", "L5"]},
         "demonstrated": {"enum": ["L0", "L1", "L2", "L3", "L4", "L5"]},
         "confidence": {"enum": ["low", "medium", "high"]}

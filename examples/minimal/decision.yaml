@@ -1,5 +1,7 @@
 apiVersion: assurance.agent/v0
 kind: Decision
+metadata:
+  id: decision-001
 task:
   id: task-001
   risk: medium
@@ -7,6 +9,7 @@ subject:
   configuration: example-agent-v1
   configuration_digest: sha256:example
 capability:
+  ref: capability-001
   required: L3
   demonstrated: L3
   confidence: high

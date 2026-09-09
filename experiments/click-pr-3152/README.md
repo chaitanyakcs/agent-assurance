@@ -13,6 +13,11 @@ network isolation, or record the uncontrolled network as an evidence caveat.
 
 ## Status
 
+**Verifier invalidated on 2026-09-09.** A Harbor no-op control earned reward
+`1.0` on the pre-change workspace. Existing #3152 agent results remain
+historical Evidence but are excluded from Capability and model-comparison
+aggregates until the task receives a verifier that fails before the fix.
+
 - Harbor Oracle passed on 2026-09-02: reward `1.0`, 0 errors.
 - Codex `gpt-5.5` passed on 2026-09-02: reward `1.0`, 0 errors.
 - Evidence: `experiments/click-pr-3152/evidence/codex-gpt-5.5.yaml`.

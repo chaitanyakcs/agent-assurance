@@ -77,6 +77,45 @@ def test_harbor_agent_kwargs_are_part_of_configuration(tmp_path):
     )
 
 
+def test_harbor_version_kwarg_does_not_duplicate_agent_version(tmp_path):
+    trial_result = tmp_path / "result.json"
+    trial_result.write_text(
+        json.dumps(
+            {
+                "agent_info": {
+                    "name": "codex",
+                    "version": "0.152.1",
+                    "model_info": {"name": "gpt-5.5", "provider": "openai"},
+                },
+                "agent_result": {},
+                "config": {
+                    "agent": {
+                        "kwargs": {"version": "0.152.1"},
+                        "skills": [],
+                        "mcp_servers": [],
+                    }
+                },
+                "verifier_result": {"rewards": {"reward": 1.0}},
+                "verifier": {"finished_at": "2026-09-09T00:00:09Z"},
+                "exception_info": None,
+                "started_at": "2026-09-09T00:00:00Z",
+                "finished_at": "2026-09-09T00:00:10Z",
+            }
+        )
+    )
+
+    evidence = evidence_from_harbor_trial(
+        trial_result,
+        task_id="task-001",
+        evidence_id="evidence-001",
+    )
+
+    assert evidence["executor"]["configuration"] == "harbor/codex@0.152.1/gpt-5.5"
+    assert evidence["executor"]["configuration_digest"] == (
+        "sha256:3810c2f1b478418758d7588c996eebab8977c38d8adb19c39d65f9685d2ee183"
+    )
+
+
 def test_harbor_exception_maps_to_aborted_evidence(tmp_path):
     trial_result = tmp_path / "result.json"
     trial_result.write_text(
@@ -105,3 +144,36 @@ def test_harbor_exception_maps_to_aborted_evidence(tmp_path):
 
     assert evidence["outcome"]["status"] == "aborted"
     assert evidence["verification"][0]["result"] == "not_run"
+
+
+def test_harbor_agent_exception_preserves_completed_verifier_result(tmp_path):
+    trial_result = tmp_path / "result.json"
+    trial_result.write_text(
+        json.dumps(
+            {
+                "agent_info": {
+                    "name": "codex",
+                    "version": "0.152.1",
+                    "model_info": {"name": "gpt-5.5", "provider": "openai"},
+                },
+                "agent_result": {},
+                "verifier_result": {"rewards": {"reward": 1.0}},
+                "verifier": {
+                    "started_at": "2026-09-09T00:00:10Z",
+                    "finished_at": "2026-09-09T00:00:11Z",
+                },
+                "exception_info": {"exception_type": "AgentTimeoutError"},
+                "started_at": "2026-09-09T00:00:00Z",
+                "finished_at": "2026-09-09T00:00:12Z",
+            }
+        )
+    )
+
+    evidence = evidence_from_harbor_trial(
+        trial_result,
+        task_id="task-001",
+        evidence_id="evidence-001",
+    )
+
+    assert evidence["outcome"]["status"] == "aborted"
+    assert evidence["verification"][0]["result"] == "pass"

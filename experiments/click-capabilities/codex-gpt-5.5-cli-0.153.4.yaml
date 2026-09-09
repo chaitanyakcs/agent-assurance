@@ -13,9 +13,9 @@ scope:
   risk_domain: developer_tooling
   max_risk: low
 evaluation:
-  attempted: 7
-  successful: 7
-  independent_trials: 7
+  attempted: 6
+  successful: 6
+  independent_trials: 6
   benchmark: click-bugfix-suite-2026-09-08
   score: 1.0
 qualification:

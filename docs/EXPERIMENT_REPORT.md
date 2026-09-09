@@ -53,9 +53,9 @@ The experiment produced configuration-specific, task-scoped results:
 
 | Configuration | Scope | Completed result | Qualification |
 | --- | --- | --- | --- |
-| `harbor/codex@0.152.1/gpt-5.5` | Click bugfix | 3/3 exact-digest records | L1, low confidence |
+| `harbor/codex@0.152.1/gpt-5.5` | Click bugfix | 2/2 valid exact-digest records | L0, insufficient evidence |
 | `harbor/codex@0.152.1/gpt-5.5 (reasoning_effort=low)` | Click bugfix | 3/4 | L0, insufficient evidence |
-| `harbor/codex@0.153.4/gpt-5.5` | Click bugfix | 7/7 | L1, low confidence |
+| `harbor/codex@0.153.4/gpt-5.5` | Click bugfix | 6/6 valid records | L1, low confidence |
 | `harbor/codex@0.153.4/gpt-5.5` | Click feature | 1/1 | L0, insufficient evidence |
 | `harbor/codex@0.153.4/gpt-5.5` | Click typing | 1/1 | L0, insufficient evidence |
 | `harbor/codex@0.153.4/gpt-5.5` | Click refactor | 1/1 | L0, insufficient evidence |
@@ -147,8 +147,10 @@ agent configuration's inability to finish within its budget.
 
 Yes as an advisory, low-risk recommendation with human gates. Allowing local
 implementation while requiring human review before pull request and merge was
-proportionate to three exact-digest bugfix passes and low confidence. The evidence does not
-support unattended publication or merge authority.
+originally appeared proportionate to three exact-digest bugfix passes and low
+confidence. After #3152's verifier failed a no-op control, the exact support
+fell to 2/2 and L0; implementation now requires human involvement. The evidence
+does not support unattended publication or merge authority.
 
 ## Schema mismatches observed
 

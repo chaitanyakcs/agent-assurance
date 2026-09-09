@@ -68,7 +68,9 @@ def evidence_from_harbor_trial(
     verification: dict[str, Any] = {
         "type": "test",
         "name": "Harbor verifier reward",
-        "result": _verification_result(reward, exception_info),
+        "result": _verification_result(
+            reward, trial.get("verifier"), exception_info
+        ),
         "independent": True,
         "details": f"reward={reward!r}; verifier_environment_mode="
         f"{trial.get('verifier_environment_mode')!r}",
@@ -103,13 +105,16 @@ def _configuration_subject(
     model_info: dict[str, Any],
     agent_config: dict[str, Any],
 ) -> dict[str, Any]:
+    kwargs = dict(agent_config.get("kwargs") or {})
+    kwargs.pop("version", None)
+
     return {
         "harness": "harbor",
         "agent": agent_info.get("name", "unknown-agent"),
         "agent_version": agent_info.get("version", "unknown-version"),
         "provider": model_info.get("provider", "unknown-provider"),
         "model": model_info.get("name", "unknown-model"),
-        "kwargs": agent_config.get("kwargs") or {},
+        "kwargs": kwargs,
         "mcp_servers": agent_config.get("mcp_servers") or [],
         "skills": agent_config.get("skills") or [],
     }
@@ -135,9 +140,13 @@ def _configuration_digest(subject: dict[str, Any]) -> str:
 
 
 def _verification_result(
-    reward: float | None, exception_info: dict[str, Any] | None
+    reward: float | None,
+    verifier_phase: dict[str, Any] | None,
+    exception_info: dict[str, Any] | None,
 ) -> str:
-    if exception_info is not None:
+    if exception_info is not None and (
+        not verifier_phase or verifier_phase.get("finished_at") is None
+    ):
         return "not_run"
 
     return "pass" if reward == 1.0 else "fail"

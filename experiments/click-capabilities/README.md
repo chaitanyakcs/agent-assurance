@@ -5,9 +5,10 @@ tasks: #3013, #3152, #3004, and #3079.
 
 Exact lineage reconstruction found that the original #3013 default Evidence
 identifies Codex CLI 0.151.0 rather than 0.152.1 and has no configuration
-digest. The 0.152.1 default Capability is therefore reconstructed from the
-three exact-digest records for #3152, #3004, and #3079. Its explicit support
-set and exclusions are recorded in `codex-gpt-5.5.support.md`.
+digest. A later no-op control also invalidated #3152's verifier. The 0.152.1
+default Capability is therefore reconstructed from the two valid exact-digest
+records for #3004 and #3079. Its explicit support set and exclusions are
+recorded in `codex-gpt-5.5.support.md`.
 
 Important caveats that the v0 Capability schema does not yet represent
 structurally:

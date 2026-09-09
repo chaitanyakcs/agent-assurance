@@ -1,0 +1,29 @@
+apiVersion: assurance.agent/v0
+kind: Evidence
+metadata:
+  id: evidence-click-pr-3013-model-comparison-gpt-5-6-sol-20260909
+  created_at: '2026-09-09T15:17:37.993719Z'
+task:
+  id: click-pr-3013
+executor:
+  type: agent
+  provider: openai
+  agent: codex
+  model: gpt-5.6-sol
+  configuration: harbor/codex@0.153.4/gpt-5.6-sol
+  configuration_digest: sha256:9cad03899b69e3cc782d8b4eeb64717f9041b8c943603f6638bfc35610adef7a
+outcome:
+  status: success
+  duration_seconds: 307.949
+  cost: 0.5043519999999999
+  notes: Controlled model comparison; Codex CLI 0.153.4 pinned explicitly; high reasoning;
+    public network baseline. Harbor trial_name=harbor__NrRGsp6. Harbor trial_uri=file:///Users/chaitanya/Work/repositories/agent-assurance/jobs/2026-09-09__20-42-29/harbor__NrRGsp6.
+    Harbor task_checksum=e9485f424688c79660b983da9e5d53588f66c305d9885da13b31b076555a007d.
+    Harbor input_tokens=428506. Harbor cache_tokens=360320. Harbor output_tokens=4374.
+verification:
+- type: test
+  name: Harbor verifier reward
+  result: pass
+  independent: true
+  details: reward=1.0; verifier_environment_mode='shared'
+  artifact: jobs/2026-09-09__20-42-29/harbor__NrRGsp6/verifier/test-stdout.txt

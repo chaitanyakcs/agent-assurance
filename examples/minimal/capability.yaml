@@ -1,5 +1,7 @@
 apiVersion: assurance.agent/v0
 kind: Capability
+metadata:
+  id: capability-001
 subject:
   provider: example-provider
   agent: example-coding-agent
@@ -17,6 +19,8 @@ evaluation:
   successful: 38
   independent_trials: 3
   benchmark: private-historical-v1
+  evidence_refs:
+    - evidence-001
   score: 0.905
 qualification:
   level: L3

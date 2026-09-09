@@ -1,5 +1,7 @@
 apiVersion: assurance.agent/v0
 kind: Decision
+metadata:
+  id: decision-click-pr-2930-codex-0-152-1
 task:
   id: click-pr-2930
   risk: low
@@ -7,12 +9,13 @@ subject:
   configuration: harbor/codex@0.152.1/gpt-5.5
   configuration_digest: sha256:3810c2f1b478418758d7588c996eebab8977c38d8adb19c39d65f9685d2ee183
 capability:
+  ref: capability-click-bugfix-codex-0-152-1-default
   required: L1
-  demonstrated: L1
+  demonstrated: L0
   confidence: low
 permissions:
   assist: allow
-  implement: allow
+  implement: require_human
   open_pr: require_human
   merge: require_human
 required_runtime_evidence:
@@ -21,7 +24,7 @@ required_runtime_evidence:
   - human_review_before_pull_request
 reason:
   - The task is a low-risk Click implementation bugfix in the same repository and task family as the demonstrated mini-suite.
-  - The selected configuration has 3 exact-digest replay successes with deterministic Harbor verifier rewards; the earlier #3013 result is excluded because it identifies Codex CLI 0.151.0 and has no configuration digest.
+  - The selected configuration has 2 exact-digest replay successes with valid deterministic verifiers; #3152 was excluded after a no-op control passed its verifier, and the earlier #3013 result identifies Codex CLI 0.151.0 without a digest.
   - Confidence remains low because the sample is small and limited to one repository.
-  - Opening a pull request and merging still require human review at this stage.
+  - Implementation, opening a pull request, and merging require human involvement because demonstrated Capability is below the required L1.
   - Follow-up held-out execution passed with Evidence evidence-click-pr-2930-codex-gpt-5-5-20260906, but Harbor installed Codex CLI 0.153.4 instead of the 0.152.1 configuration referenced by this Decision, so it does not strengthen this configuration's Capability.

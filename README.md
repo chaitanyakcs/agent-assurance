@@ -117,6 +117,7 @@ Key supporting docs:
 - [First historical replay experiment](docs/EXPERIMENT_PLAN.md)
 - [Click replay experiment report](docs/EXPERIMENT_REPORT.md)
 - [Evidence graph Stage 0 exploration](docs/EVIDENCE_GRAPH_EXPLORATION.md)
+- [Controlled Codex model comparison](docs/MODEL_COMPARISON.md)
 - [Pre-RFC roadmap](docs/ROADMAP.md)
 
 ## Project status
