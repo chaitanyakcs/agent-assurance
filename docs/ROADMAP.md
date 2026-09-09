@@ -7,26 +7,26 @@ The first milestone is evidence, not architecture.
 - [x] Define Task, Evidence, Capability, and Decision v0 schemas.
 - [x] Provide valid minimal examples.
 - [x] Provide a CLI that validates assurance documents.
-- [ ] Test the schemas against 10–15 historical tasks from one public OSS repository.
-- [ ] Identify where the four-object model breaks down before adding new primitives.
+- [x] Test the schemas against 10–15 historical tasks from one public OSS repository.
+- [x] Identify where the four-object model breaks down before adding new primitives.
 
 ## M1 — Historical replay spike
 
-- [ ] Select a public repository with good merged-PR history and deterministic tests.
-- [ ] Reconstruct the repository at the pre-change commit for each task.
-- [ ] Create task classifications and deterministic evaluation contracts.
-- [ ] Execute at least two agent configurations using an existing runner such as Harbor.
-- [ ] Emit Evidence records for each trial.
-- [ ] Aggregate Evidence into Capability records.
+- [x] Select a public repository with good merged-PR history and deterministic tests.
+- [x] Reconstruct the repository at the pre-change commit for each task.
+- [x] Create task classifications and deterministic evaluation contracts.
+- [x] Execute at least two agent configurations using an existing runner such as Harbor.
+- [x] Emit Evidence records for each trial.
+- [x] Aggregate Evidence into Capability records.
 - [ ] Verify that experienced engineers consider the resulting capability statements defensible.
 
 ## M2 — One autonomy decision
 
-- [ ] Classify one incoming task.
-- [ ] Match it against demonstrated capability.
-- [ ] Combine risk, qualification, and current CI evidence.
-- [ ] Emit a Decision record such as `assist`, `implement`, `open_pr`, or `merge`.
-- [ ] Keep enforcement advisory-only initially.
+- [x] Classify one incoming task.
+- [x] Match it against demonstrated capability.
+- [x] Combine risk, qualification, and current CI evidence.
+- [x] Emit a Decision record such as `assist`, `implement`, `open_pr`, or `merge`.
+- [x] Keep enforcement advisory-only initially.
 
 ## M3 — Community validation
 

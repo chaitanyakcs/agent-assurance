@@ -115,6 +115,7 @@ Key supporting docs:
 - [Decision log](docs/DECISIONS.md)
 - [Community reuse / landscape](docs/COMMUNITY_REUSE.md)
 - [First historical replay experiment](docs/EXPERIMENT_PLAN.md)
+- [Click replay experiment report](docs/EXPERIMENT_REPORT.md)
 - [Pre-RFC roadmap](docs/ROADMAP.md)
 
 ## Project status

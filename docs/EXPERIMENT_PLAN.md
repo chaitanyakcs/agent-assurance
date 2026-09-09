@@ -204,6 +204,9 @@ Only then consider an RFC.
 
 ## Current pilot progress
 
+The completed pilot findings are summarized in
+[`EXPERIMENT_REPORT.md`](EXPERIMENT_REPORT.md).
+
 As of 2026-09-08:
 
 - 4 replayable Click tasks are packaged: #3013, #3152, #3004, and #3079.
